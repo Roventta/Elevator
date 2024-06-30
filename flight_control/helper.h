@@ -1,5 +1,5 @@
-#ifndef SPW_h
-#define SPW_h
+#ifndef HELPER
+#define HELPER
 
 #define BUFSIZE 10
 
@@ -41,7 +41,7 @@ class SerialPlotterWrapper{
 
       if(i != CurSize-1){Serial.print(",");};
     }
-    Serial.println();
+    Serial.print("\n");
   }
 
 };
