@@ -6,7 +6,7 @@
 Adafruit_MPU6050 OMPU;
 // Readings of acceleration, Gyro, and Temprature
 sensors_event_t RAcc, RGyro, RTemp;
-SerialPlotterWrapper<double> *Plotter;
+SerialPlotterWrapper<float> *Plotter;
 OrientationProcessor *Ori;
 Calibrator *Calib;
 
@@ -37,9 +37,9 @@ void setup() {
   while(!Serial){delay(10);}
   mpuSetup();
   calib();
-  Plotter = new SerialPlotterWrapper<double>(3);
-  Plotter -> addField("Ori_Gyro_Phi", &(Ori->GPhi));
-  Plotter -> addField("Ori_Gyro_Theta", &(Ori->GTheta));
+  Plotter = new SerialPlotterWrapper<float>(3);
+  Plotter -> addField("Ori_kalman_phi", &(Ori->Readings[0]));
+
   LastTimeStamp = micros();
 }
 
